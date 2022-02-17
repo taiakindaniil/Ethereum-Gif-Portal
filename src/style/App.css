@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  width: calc(100%-80px);
+  margin: 64px 40px;
+}
+
+.data-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 1000px;
+}
+
+.header {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 96px;
+
+  text-align: center;
+  letter-spacing: -0.025em;
+
+  background: -webkit-linear-gradient(300deg, #CDF9E8, #F0BDD0, #DC8DDC, #CBADEB, #FFFDB1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bio {
+  margin-top: 10px;
+
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-size: 24px;
+  font-weight: 500;
+
+  text-align: center;
+  letter-spacing: -0.025em;
+  color: white;
+}
+
+.input-container {
+  position: relative;
+  margin-top: 30px;
+}
+
+.gif-input {
+  position: relative;
+  padding: 16px 100px 16px 26px;
+  width: 100%;
+  background-color: #202020;
+  border: 0;
+  border-radius: 16px;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+
+  letter-spacing: -0.025em;
+  color: white;
+
+  outline: none;
+}
+
+.post-button {
+  position: absolute;
+  right: 0;
+  height: calc(100% - 12px);
+
+  padding: 0px 22px;
+  margin: 6px;
+  border: 0;
+  border-radius: 16px;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.connect-wallet-button {
+  width: 200px;
+  height: 50px;
+  align-self: center;
+  margin-top: 48px;
+  border: 0;
+  border-radius: 16px;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.post-button:active, .connect-wallet-button:active {
+  transform: scale(0.9);
+}
+
+.gifs-container {
+  margin-top: 20px;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gifs-container > div {
+  /* width: calc(100% / 3); */
+}
+
+.gifs-container > div img {
+  height: 200px;
+
+  border-radius: 16px;
+}
