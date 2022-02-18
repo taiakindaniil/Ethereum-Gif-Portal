@@ -27,6 +27,34 @@ export default function App() {
 
   useEffect(() => {
     checkIfWalletIsConnected()
+
+    let gifPortalContract: ethers.Contract
+  
+    const onNewGif = (from: string, url: string, timestamp: number) => {
+      console.log("NewGif", from, url, timestamp)
+      setAllGifs(prevGifs => [
+        {
+          user: from,
+          timestamp: new Date(timestamp * 1000),
+          url: url
+        },
+        ...prevGifs
+      ])
+    }
+  
+    if (window.ethereum) {
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+  
+      gifPortalContract = new ethers.Contract(contractAddress, contractABI, signer)
+      gifPortalContract.on("NewGif", onNewGif)
+    }
+  
+    return () => {
+      if (gifPortalContract) {
+        gifPortalContract.off("NewGif", onNewGif);
+      }
+    }
   }, [])
 
   const getAllGifs = async () => {
@@ -36,8 +64,10 @@ export default function App() {
         const signer = provider.getSigner()
         const gifPortalContract = new ethers.Contract(contractAddress, contractABI, signer)
 
-        const gifs = await gifPortalContract.getAllGifs() as Gif[]
-        setAllGifs(gifs)
+        let gifs = await gifPortalContract.getAllGifs() as Gif[]
+        let copiedGifs = [...gifs].reverse()
+        
+        setAllGifs(copiedGifs)
       } else {
         console.log("Ethereum object doesn't exist!")
       }
@@ -103,8 +133,6 @@ export default function App() {
 
         await gifTxn.wait()
         console.log("Mined -- ", gifTxn.hash)
-
-        getAllGifs() // update container
 
         count = await gifPortalContract.getTotalGifs()
         console.log("Retrieved total wave count...", count.toNumber())
