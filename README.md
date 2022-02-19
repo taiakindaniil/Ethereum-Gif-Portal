@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# Ethereum Gif Portal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Just post a url of the gif and it will be written on the Ethereum blockchain.
+
+This project contains Hardhat framework to work with contracts. See [contracts directory](https://github.com/taiakindaniil/Ethereum-Gif-Portal/tree/master/contracts).
+
+Bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
